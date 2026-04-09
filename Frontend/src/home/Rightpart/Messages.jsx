@@ -21,7 +21,7 @@ function Messages() {
   }, [messages]);
   return (
     <div
-      className="flex-1 overflow-y-auto"
+      className="flex-1 overflow-y-auto px-2 py-4 md:px-4"
       style={{ minHeight: "calc(92vh - 8vh)" }}
     >
       {loading ? (
@@ -37,7 +37,7 @@ function Messages() {
 
       {!loading && messages.length === 0 && (
         <div>
-          <p className="text-center mt-[20%]">
+          <p className="mt-[20%] text-center text-slate-400">
             Say! Hi to start the conversation
           </p>
         </div>

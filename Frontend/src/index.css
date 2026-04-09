@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-main: #07111f;
+  --bg-panel: rgba(11, 23, 39, 0.82);
+  --bg-panel-strong: rgba(15, 23, 42, 0.96);
+  --line-soft: rgba(148, 163, 184, 0.14);
+  --text-main: #e5eefb;
+  --text-muted: #8ea0ba;
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.18);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top left, rgba(52, 211, 153, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 24%),
+    linear-gradient(135deg, #040b16 0%, #07111f 48%, #0a1526 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
 .flex-1::-webkit-scrollbar {
   display: none;
 }

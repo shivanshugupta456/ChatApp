@@ -16,22 +16,22 @@ function App() {
           path="/"
           element={
             authUser ? (
-              <div className="drawer lg:drawer-open">
+              <div className="drawer min-h-screen bg-transparent lg:drawer-open">
                 <input
                   id="my-drawer-2"
                   type="checkbox"
                   className="drawer-toggle"
                 />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content px-3 py-3 md:px-4 md:py-4">
                   <Right />
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side z-20">
                   <label
                     htmlFor="my-drawer-2"
                     aria-label="close sidebar"
-                    className="drawer-overlay"
+                    className="drawer-overlay bg-slate-950/70"
                   ></label>
-                  <ul className="menu w-80 min-h-full bg-black text-base-content">
+                  <ul className="menu w-80 min-h-full border-r border-white/10 bg-slate-950/85 text-base-content backdrop-blur-xl">
                     <Left />
                   </ul>
                 </div>

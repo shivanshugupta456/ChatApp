@@ -34,20 +34,29 @@ function Login() {
       });
   };
   return (
-    <>
-      <div className="flex h-screen items-center justify-center">
+      <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10">
+        <div className="absolute inset-0 opacity-60">
+          <div className="absolute left-[12%] top-[16%] h-44 w-44 rounded-full bg-emerald-400/12 blur-3xl" />
+          <div className="absolute bottom-[12%] right-[10%] h-56 w-56 rounded-full bg-sky-400/10 blur-3xl" />
+        </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="border border-white px-6 py-2 rounded-md space-y-3 w-96"
+          className="relative z-10 w-full max-w-md space-y-4 rounded-[28px] border border-white/10 bg-slate-950/70 px-6 py-7 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
         >
-          <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
-          </h1>
-          <h2 className="text-xl text-white font-bold">Login</h2>
-          <br />
+          <div className="space-y-2 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300/70">
+              Welcome Back
+            </p>
+            <h1 className="text-3xl font-semibold text-white">
+              Chat<span className="text-emerald-400">App</span>
+            </h1>
+            <p className="text-sm text-slate-400">
+              Continue your conversations with a cleaner, faster workspace.
+            </p>
+          </div>
 
           {/* Email */}
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -59,7 +68,7 @@ function Login() {
             </svg>
             <input
               type="text"
-              className="grow"
+              className="grow bg-transparent"
               placeholder="Email"
               {...register("email", { required: true })}
             />
@@ -70,7 +79,7 @@ function Login() {
             </span>
           )}
           {/* Password */}
-          <label className="input input-bordered flex items-center gap-2">
+          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -85,7 +94,7 @@ function Login() {
             </svg>
             <input
               type="password"
-              className="grow"
+              className="grow bg-transparent"
               placeholder="password"
               {...register("password", { required: true })}
             />
@@ -96,12 +105,12 @@ function Login() {
             </span>
           )}
           {/* Text & Button */}
-          <div className="flex justify-between">
-            <p>
+          <div className="flex items-center justify-between pt-2">
+            <p className="text-sm text-slate-400">
               New user?
               <Link
                 to="/signup"
-                className="text-blue-500 underline cursor-pointer ml-1"
+                className="ml-1 text-emerald-300 transition hover:text-emerald-200"
               >
                 Signup
               </Link>
@@ -109,12 +118,11 @@ function Login() {
             <input
               type="submit"
               value="Login"
-              className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
+              className="cursor-pointer rounded-xl bg-emerald-500 px-5 py-2.5 font-medium text-slate-950 transition hover:bg-emerald-400"
             />
           </div>
         </form>
       </div>
-    </>
   );
 }
 
