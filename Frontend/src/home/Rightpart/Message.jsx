@@ -2,8 +2,7 @@ function Message({ message }) {
   const authUser = JSON.parse(localStorage.getItem("ChatApp"));
   const itsMe = message.senderId === authUser.user._id;
 
-  const chatName = itsMe ? " chat-end" : "chat-start";
-  const chatColor = itsMe ? "bg-blue-500" : "";
+  const chatName = itsMe ? "chat-end" : "chat-start";
 
   const createdAt = new Date(message.createdAt);
   const formattedTime = createdAt.toLocaleTimeString([], {
@@ -12,19 +11,23 @@ function Message({ message }) {
   });
 
   return (
-    <div className="px-1 py-2">
+    <div className="px-1 py-1.5">
       <div>
         <div className={`chat ${chatName}`}>
           <div
-            className={`chat-bubble max-w-[80%] border text-white shadow-[0_12px_30px_rgba(0,0,0,0.16)] ${
+            className={`chat-bubble max-w-[82%] rounded-[22px] border px-4 py-3 text-[15px] leading-relaxed text-white shadow-[0_16px_35px_rgba(0,0,0,0.18)] ${
               itsMe
-                ? "border-emerald-400/20 bg-emerald-500/90"
-                : "border-white/10 bg-slate-800/95"
+                ? "border-emerald-300/20 bg-gradient-to-br from-emerald-400 to-emerald-500"
+                : "border-white/10 bg-slate-800/95 backdrop-blur-xl"
             }`}
           >
             {message.message}
           </div>
-          <div className="chat-footer mt-1 px-1 text-[11px] text-slate-500">
+          <div
+            className={`chat-footer mt-1 px-2 text-[11px] tracking-wide ${
+              itsMe ? "text-emerald-100/70" : "text-slate-500"
+            }`}
+          >
             {formattedTime}
           </div>
         </div>

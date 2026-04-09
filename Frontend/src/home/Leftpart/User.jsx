@@ -19,13 +19,22 @@ function User({ user }) {
     >
       <div className="flex cursor-pointer items-center space-x-4 px-5 py-3">
         <div className={`avatar ${isOnline ? "online" : ""}`}>
-          <div className="w-12 rounded-full">
+          <div className="w-12 rounded-full ring-1 ring-white/10">
             <img src={profile} />
           </div>
         </div>
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h1 className="truncate font-semibold text-white">{user.fullname}</h1>
           <span className="block truncate text-sm text-slate-400">{user.email}</span>
+        </div>
+        <div
+          className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] ${
+            isOnline
+              ? "bg-emerald-400/12 text-emerald-300"
+              : "bg-white/5 text-slate-500"
+          }`}
+        >
+          {isOnline ? "Live" : "Away"}
         </div>
       </div>
     </div>
