@@ -159,6 +159,6 @@ Default local URLs:
 
 ## Author
 
-Created by **Akhilesh**.
+Created by **Shivanshu**.
 
 If you want, I can also help turn this into a portfolio-ready README with deployment badges, live demo links, and a contribution section.
