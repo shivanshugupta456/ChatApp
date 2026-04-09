@@ -45,7 +45,7 @@ const NoChatSelected = () => {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(52,211,153,0.12),transparent_32%)]" />
       <label
         htmlFor="my-drawer-2"
-        className="btn btn-ghost drawer-button lg:hidden absolute left-5 top-5 border border-white/10 bg-slate-900/70"
+        className="btn btn-ghost drawer-button lg:hidden absolute left-5 top-5 border border-white/10 bg-slate-900/70 transition hover:border-emerald-400/20 hover:bg-slate-800/90"
       >
         <CiMenuFries className="text-white text-xl" />
       </label>

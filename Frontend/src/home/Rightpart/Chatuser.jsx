@@ -15,7 +15,7 @@ function Chatuser() {
     <div className="relative flex items-center justify-center gap-4 border-b border-white/8 bg-white/5 px-4 py-4 backdrop-blur-xl">
       <label
         htmlFor="my-drawer-2"
-        className="btn btn-ghost drawer-button lg:hidden absolute left-4 border border-white/10 bg-slate-900/70"
+        className="btn btn-ghost drawer-button lg:hidden absolute left-4 border border-white/10 bg-slate-900/70 transition hover:border-emerald-400/20 hover:bg-slate-800/90"
       >
         <CiMenuFries className="text-white text-xl" />
       </label>

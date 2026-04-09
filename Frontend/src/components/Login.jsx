@@ -41,7 +41,7 @@ function Login() {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="relative z-10 w-full max-w-md space-y-4 rounded-[28px] border border-white/10 bg-slate-950/70 px-6 py-7 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+          className="relative z-10 w-full max-w-md space-y-4 rounded-[28px] border border-white/10 bg-slate-950/70 px-6 py-7 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_90px_rgba(0,0,0,0.5)]"
         >
           <div className="space-y-2 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300/70">
@@ -56,7 +56,7 @@ function Login() {
           </div>
 
           {/* Email */}
-          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200">
+          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200 transition focus-within:border-emerald-400/30 focus-within:bg-white/[0.07]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -79,7 +79,7 @@ function Login() {
             </span>
           )}
           {/* Password */}
-          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200">
+          <label className="input flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 text-slate-200 transition focus-within:border-emerald-400/30 focus-within:bg-white/[0.07]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -118,7 +118,7 @@ function Login() {
             <input
               type="submit"
               value="Login"
-              className="cursor-pointer rounded-xl bg-emerald-500 px-5 py-2.5 font-medium text-slate-950 transition hover:bg-emerald-400"
+              className="cursor-pointer rounded-xl bg-emerald-500 px-5 py-2.5 font-medium text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-400"
             />
           </div>
         </form>
