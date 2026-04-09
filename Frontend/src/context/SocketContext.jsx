@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 import io from "socket.io-client";
+
 const socketContext = createContext();
 const socketUrl =
   import.meta.env.VITE_SOCKET_URL ||
@@ -19,24 +20,29 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io(socketUrl, {
+      const nextSocket = io(socketUrl, {
         withCredentials: true,
         query: {
           userId: authUser.user._id,
         },
       });
-      setSocket(socket);
-      socket.on("getOnlineUsers", (users) => {
+
+      setSocket(nextSocket);
+      nextSocket.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
-      return () => socket.close();
-    } else {
-      if (socket) {
-        socket.close();
+
+      return () => {
+        nextSocket.close();
         setSocket(null);
-      }
+        setOnlineUsers([]);
+      };
     }
+
+    setSocket(null);
+    setOnlineUsers([]);
   }, [authUser]);
+
   return (
     <socketContext.Provider value={{ socket, onlineUsers }}>
       {children}

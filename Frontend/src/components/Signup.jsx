@@ -1,11 +1,11 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+
 function Signup() {
-  const [authUser, setAuthUser] = useAuth();
+  const [, setAuthUser] = useAuth();
   const {
     register,
     handleSubmit,
@@ -15,8 +15,7 @@ function Signup() {
 
   // watch the password and confirm password fields
   const password = watch("password", "");
-  const confirmPassword = watch("confirmPassword", "");
-  console.log(confirmPassword);
+  watch("confirmPassword", "");
 
   const validatePasswordMatch = (value) => {
     return value === password || "Passwords do not match";
@@ -29,7 +28,6 @@ function Signup() {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
-    // console.log(userInfo);
     await axios
       .post("/api/user/signup", userInfo)
       .then((response) => {

@@ -1,12 +1,11 @@
 import axios from "axios";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function Login() {
-  const [authUser, setAuthUser] = useAuth();
+  const [, setAuthUser] = useAuth();
 
   const {
     register,
@@ -19,7 +18,6 @@ function Login() {
       email: data.email,
       password: data.password,
     };
-    // console.log(userInfo);
     axios
       .post("/api/user/login", userInfo)
       .then((response) => {

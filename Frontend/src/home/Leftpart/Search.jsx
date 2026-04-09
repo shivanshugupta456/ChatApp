@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import useGetAllUsers from "../../context/useGetAllUsers";
 import useConversation from "../../zustand/useConversation";
 import toast from "react-hot-toast";
+
 function Search() {
   const [search, setSearch] = useState("");
   const [allUsers] = useGetAllUsers();
   const { setSelectedConversation } = useConversation();
-  console.log(allUsers);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!search) return;

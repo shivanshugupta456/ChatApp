@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Chatuser from "./Chatuser";
 import Messages from "./Messages";
 import Typesend from "./Typesend";
@@ -8,9 +8,11 @@ import { CiMenuFries } from "react-icons/ci";
 
 function Right() {
   const { selectedConversation, setSelectedConversation } = useConversation();
+
   useEffect(() => {
-    return setSelectedConversation(null);
+    return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
+
   return (
     <div className="w-full bg-slate-900 text-gray-300">
       <div>
@@ -37,7 +39,7 @@ export default Right;
 
 const NoChatSelected = () => {
   const [authUser] = useAuth();
-  console.log(authUser);
+
   return (
     <>
       <div className="relative">
