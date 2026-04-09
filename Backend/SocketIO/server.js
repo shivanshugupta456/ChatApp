@@ -38,6 +38,28 @@ io.on("connection", (socket) => {
   // used to send the events to all connected users
   io.emit("getOnlineUsers", Object.keys(users));
 
+  socket.on("typing", ({ receiverId }) => {
+    if (!userId || !receiverId) {
+      return;
+    }
+
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("typing", { senderId: userId });
+    }
+  });
+
+  socket.on("stopTyping", ({ receiverId }) => {
+    if (!userId || !receiverId) {
+      return;
+    }
+
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("stopTyping", { senderId: userId });
+    }
+  });
+
   // used to listen client side events emitted by server side (server & client)
   socket.on("disconnect", () => {
     console.log("a user disconnected", socket.id);

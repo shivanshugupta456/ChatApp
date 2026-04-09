@@ -5,11 +5,16 @@ import profile from "../../../public/user.jpg";
 
 function Chatuser() {
   const { selectedConversation } = useConversation();
-  const { onlineUsers } = useSocketContext();
+  const { onlineUsers, typingUsers } = useSocketContext();
 
   const getOnlineUsersStatus = (userId) => {
     return onlineUsers.includes(userId) ? "Online" : "Offline";
   };
+
+  const isTyping = Boolean(typingUsers[selectedConversation._id]);
+  const statusText = isTyping
+    ? "Typing..."
+    : getOnlineUsersStatus(selectedConversation._id);
 
   return (
     <div className="relative flex items-center justify-center gap-4 border-b border-white/8 bg-white/5 px-4 py-4 backdrop-blur-xl">
@@ -27,8 +32,12 @@ function Chatuser() {
         </div>
         <div>
           <h1 className="text-lg font-semibold text-white">{selectedConversation.fullname}</h1>
-          <span className="text-sm text-slate-400">
-            {getOnlineUsersStatus(selectedConversation._id)}
+          <span
+            className={`text-sm ${
+              isTyping ? "font-medium text-emerald-300" : "text-slate-400"
+            }`}
+          >
+            {statusText}
           </span>
         </div>
       </div>

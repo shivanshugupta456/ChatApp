@@ -28,7 +28,12 @@ function Message({ message }) {
               itsMe ? "text-emerald-100/70" : "text-slate-500"
             }`}
           >
-            {formattedTime}
+            <span>{formattedTime}</span>
+            {itsMe && (
+              <span className="ml-2 font-medium">
+                {message.seen ? "Seen" : "Delivered"}
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ export const useSocketContext = () => {
 export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
+  const [typingUsers, setTypingUsers] = useState({});
   const [authUser] = useAuth();
 
   useEffect(() => {
@@ -32,19 +33,59 @@ export const SocketProvider = ({ children }) => {
         setOnlineUsers(users);
       });
 
+      nextSocket.on("typing", ({ senderId }) => {
+        if (!senderId) {
+          return;
+        }
+
+        setTypingUsers((current) => ({ ...current, [senderId]: true }));
+      });
+
+      nextSocket.on("stopTyping", ({ senderId }) => {
+        if (!senderId) {
+          return;
+        }
+
+        setTypingUsers((current) => {
+          const nextTypingUsers = { ...current };
+          delete nextTypingUsers[senderId];
+          return nextTypingUsers;
+        });
+      });
+
       return () => {
         nextSocket.close();
         setSocket(null);
         setOnlineUsers([]);
+        setTypingUsers({});
       };
     }
 
     setSocket(null);
     setOnlineUsers([]);
+    setTypingUsers({});
   }, [authUser]);
 
+  const startTyping = (receiverId) => {
+    if (!socket || !receiverId) {
+      return;
+    }
+
+    socket.emit("typing", { receiverId });
+  };
+
+  const stopTyping = (receiverId) => {
+    if (!socket || !receiverId) {
+      return;
+    }
+
+    socket.emit("stopTyping", { receiverId });
+  };
+
   return (
-    <socketContext.Provider value={{ socket, onlineUsers }}>
+    <socketContext.Provider
+      value={{ socket, onlineUsers, typingUsers, startTyping, stopTyping }}
+    >
       {children}
     </socketContext.Provider>
   );
